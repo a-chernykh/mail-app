@@ -22,6 +22,10 @@ gem 'simple_form', github: 'plataformatec/simple_form'
 gem 'carrierwave'
 gem 'pony'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
