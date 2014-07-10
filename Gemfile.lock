@@ -172,6 +172,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass (~> 3.2.0)
+  capybara
   coffee-rails (~> 4.0.0)
   cucumber-rails
   database_cleaner

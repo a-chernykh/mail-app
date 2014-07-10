@@ -5,15 +5,11 @@ html
     == stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false
     == javascript_include_tag 'application', 'data-turbolinks-track' => false
     == csrf_meta_tags
+
   body
-    div class="navbar navbar-fixed-top"
-      div class="navbar-inner"
-        div class="container"
-          a class='brand' href='/'
-            | Mail sender
-          ul class='nav'
-            li
-              a href='/' Home
-    
-    div class="container"
-      == yield
+    nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          a.navbar-brand href='#' Mail sender
+
+    .container-fluid== yield
