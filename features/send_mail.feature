@@ -7,9 +7,9 @@ Feature: Send e-mail
     Given I am on the compose new message page
 
   Scenario: User fills in all fields correctly
-    When I fill in "To:" with "recipient@email.com"
-    And I fill in "Subject:" with "Hey, how's it going?"
-    And I fill in "Body:" with
+    When I fill in "To" with "recipient@email.com"
+    And I fill in "Subject" with "Hey, how's it going?"
+    And I fill in "Body" with
     """
     Hi recipient,
 

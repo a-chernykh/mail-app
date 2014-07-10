@@ -13,9 +13,10 @@ gem 'jquery-rails'
 
 gem 'jbuilder', '~> 2.0'
 
-gem 'spring',        group: :development
+gem 'spring', group: :development
 
 gem 'email_validator'
+gem 'simple_form', github: 'plataformatec/simple_form'
 
 group :test do
   gem 'cucumber-rails', :require => false
@@ -23,4 +24,5 @@ group :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'factory_girl'
 end

@@ -17,4 +17,18 @@ describe Message do
       it { should_not validate_presence_of(:subject) }
     end
   end
+
+  it 'sends non-draft message' do
+    message = build :message
+
+    message_sender = double 'MessageSender', send: true
+    allow(MessageSender).to receive(:new).with(message).and_return message_sender
+    expect(message_sender).to receive(:send_email)
+    message.save!
+  end
+
+  it 'does not sends draft message' do
+    expect_any_instance_of(MessageSender).not_to receive(:send_email)
+    create :message, is_draft: true
+  end
 end

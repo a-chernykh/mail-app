@@ -1,0 +1,8 @@
+.row
+  .col-md-12
+    == simple_form_for @message do |f|
+      == f.input :to_email
+      == f.input :subject
+      == f.input :body
+
+      == f.button :submit
