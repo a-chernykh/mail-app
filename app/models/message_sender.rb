@@ -11,7 +11,7 @@ class MessageSender
 
   def mail_attrs
     attachments = {}
-    attachments[@message.attachment.filename] = @message.attachment.file.file if @message.attachment.present?
+    attachments[@message.attachment.filename] = @message.attachment.file.read if @message.attachment.present?
     { to:          @message.to_email,
       subject:     @message.subject,
       body:        @message.body,
