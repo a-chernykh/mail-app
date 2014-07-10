@@ -1,12 +1,17 @@
+require 'file_size_validator'
+
 class Message < ActiveRecord::Base
-  def self.is_draft_proc
+  def self.is_draft_checker
     -> (message) { message.is_draft }
   end
 
-  validates :to_email, presence: true, email: true, unless: Message.is_draft_proc
-  validates :subject, presence: true, unless: Message.is_draft_proc
+  mount_uploader :attachment, AttachmentUploader
 
-  after_create :send_message, unless: Message.is_draft_proc
+  validates :to_email, presence: true, email: true, unless: Message.is_draft_checker
+  validates :subject, presence: true, unless: Message.is_draft_checker
+  validates :attachment, file_size: { maximum: 20.megabytes.to_i }
+
+  after_create :send_message, unless: Message.is_draft_checker
 
   private
 

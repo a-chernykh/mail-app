@@ -14,13 +14,46 @@ describe MessagesController do
   end
 
   describe 'POST create' do
-    context 'valid message' do
-      def post_valid_message
-        post :create, message: attributes_for(:message)
+    context 'not draft' do
+      context 'valid message' do
+        def post_valid_message
+          post :create, message: attributes_for(:message)
+        end
+
+        it 'creates new message' do
+          expect { post_valid_message }.to change { Message.count }.by(1)
+        end
+
+        it 'redirects to the new message form' do
+          post_valid_message
+          expect(response).to redirect_to new_message_url
+        end
+      end
+
+      context 'invalid message' do
+        def post_invalid_message
+          post :create, message: attributes_for(:message, subject: nil)
+        end
+
+        it 'renders new action' do
+          post_invalid_message
+          expect(response).to render_template 'new'
+        end
+      end
+    end
+
+    context 'draft' do
+      def post_draft
+        post :create, message: attributes_for(:message, subject: nil), commit: 'Save as draft'
       end
 
       it 'creates new message' do
-        expect { post_valid_message }.to change { Message.count }.by(1)
+        expect { post_draft }.to change { Message.count }.by(1)
+      end
+
+      it 'redirects to the new message form' do
+        post_draft
+        expect(response).to redirect_to new_message_url
       end
     end
   end

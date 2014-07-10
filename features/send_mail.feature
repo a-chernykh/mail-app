@@ -7,8 +7,7 @@ Feature: Send e-mail
     Given I am on the compose new message page
 
   Scenario: User fills in all fields correctly
-    When I fill in "To" with "recipient@email.com"
-    And I fill in "Subject" with "Hey, how's it going?"
+    When I fill in "To" with "recipient1@email.com"
     And I fill in "Body" with
     """
     Hi recipient,
@@ -18,5 +17,13 @@ Feature: Send e-mail
     Cheers,
     Me.
     """
+    And I fill in "Subject" with "Hey, how's it going?"
     And I click "Send"
-    Then email should be sent to "recipient@email.com" with subject "Hey, how's it going?"
+    Then "recipient1@email.com" should receive an email
+    When I open the email
+    Then I should see "Hey, how's it going?" in the email subject
+
+  Scenario: User forgets to fill-in subject
+    When I fill in "To" with "recipient2@email.com"
+    And I click "Send"
+    Then "recipient2@email.com" should not receive an email

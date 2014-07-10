@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20140710091022) do
   enable_extension "plpgsql"
 
   create_table "messages", force: true do |t|
-    t.string  "to_email",                   null: false
-    t.string  "subject",                    null: false
+    t.string  "to_email"
+    t.string  "subject"
     t.text    "body"
     t.string  "attachment"
     t.boolean "is_draft",   default: false

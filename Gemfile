@@ -17,12 +17,16 @@ gem 'spring', group: :development
 
 gem 'email_validator'
 gem 'simple_form', github: 'plataformatec/simple_form'
+gem 'carrierwave'
+gem 'pony'
 
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-its'
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'factory_girl'
+  gem 'email_spec'
 end

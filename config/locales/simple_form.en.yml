@@ -32,6 +32,7 @@ en:
       message:
         to_email: '* Mandatory'
         subject: '* Mandatory'
+        attachment: '20Mb maximum'
 
     labels:
       defaults:

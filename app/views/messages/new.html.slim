@@ -4,5 +4,7 @@
       == f.input :to_email
       == f.input :subject
       == f.input :body
+      == f.input :attachment
 
-      == f.button :submit
+      == f.button :submit, class: 'btn btn-primary', 'data-disable-with' => 'Sending...'
+      == f.button :submit, 'Save as draft', class: 'btn btn-default', 'data-disable-with' => 'Saving...'

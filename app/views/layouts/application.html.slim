@@ -10,6 +10,10 @@ html
     nav.navbar.navbar-default
       .container-fluid
         .navbar-header
-          a.navbar-brand href='#' Mail sender
+          a.navbar-brand href='/' Mail sender
 
-    .container-fluid== yield
+    .container-fluid
+      - flash.each do |type, message|
+        .alert.alert-info= message
+
+      == yield

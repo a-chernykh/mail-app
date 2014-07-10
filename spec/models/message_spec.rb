@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 describe Message do
+  its(:attachment) { should be_an_instance_of(AttachmentUploader) }
+
   describe 'validations' do
     context 'not draft' do
       it { should validate_presence_of(:to_email) }
